@@ -3,14 +3,13 @@ import bluetooth
 import json
 
 def runServer():
-	while True:
-		server_sock=bluetooth.BluetoothSocket( bluetooth.L2CAP )
+	server_sock=bluetooth.BluetoothSocket( bluetooth.L2CAP )
 
-		port = 0x1001
+	port = 0x1001
 
-		server_sock.bind(("",port))
-		server_sock.listen(1)
-                   
+	server_sock.bind(("",port))
+	server_sock.listen(1)
+        while True:
 		client_sock,address = server_sock.accept()
 		print("Accepted connection from ",address)
 
@@ -21,7 +20,7 @@ def runServer():
 
 		
 		client_sock.close()
-		server_sock.close()
+	server_sock.close()
 
 
 def setWifi(sattg, interface="wlan0"):
